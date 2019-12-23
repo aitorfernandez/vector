@@ -10,10 +10,12 @@ type Vec3 struct {
 	X, Y, Z float64
 }
 
+// ToString returns a string representation of a vector
 func (v *Vec3) ToString() string {
 	return fmt.Sprintf("Vec3 struct: %.2f, %.2f, %.2f", v.X, v.Y, v.Z)
 }
 
+// Add x, y, and z from a vector
 func (v *Vec3) Add(a ...interface{}) {
 	switch e := a[0].(type) {
 	case Vec3:
@@ -34,6 +36,7 @@ func (v *Vec3) Add(a ...interface{}) {
 	}
 }
 
+// Sub x, y, and z from a vector
 func (v *Vec3) Sub(a ...interface{}) {
 	switch e := a[0].(type) {
 	case Vec3:
@@ -54,12 +57,23 @@ func (v *Vec3) Sub(a ...interface{}) {
 	}
 }
 
+func getFloat(i interface{}) float64 {
+	switch i.(type) {
+	case int:
+		return float64(i.(int))
+	default:
+		return i.(float64)
+	}
+}
+
+// Mult the vector
 func (v *Vec3) Mult(n float64) {
 	v.X *= n
 	v.Y *= n
 	v.Z *= n
 }
 
+// Div the vector
 func (v *Vec3) Div(n float64) {
 	if n == 0 {
 		log.Println("divide by 0")
@@ -71,17 +85,9 @@ func (v *Vec3) Div(n float64) {
 	v.Z /= n
 }
 
+// Magnitude calculates the length of the vector
 func (v *Vec3) Magnitude() float64 {
 	return math.Sqrt(v.X*v.X + v.Y*v.Y + v.Z*v.Z)
-}
-
-func getFloat(i interface{}) float64 {
-	switch i.(type) {
-	case int:
-		return float64(i.(int))
-	default:
-		return i.(float64)
-	}
 }
 
 // Normalize the vector to length 1
