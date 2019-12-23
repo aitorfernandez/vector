@@ -3,6 +3,7 @@ package vec3
 import (
 	"fmt"
 	"log"
+	"math"
 )
 
 type Vec3 struct {
@@ -68,6 +69,10 @@ func (v *Vec3) Div(n float64) {
 	v.X /= n
 	v.Y /= n
 	v.Z /= n
+}
+
+func (v *Vec3) Magnitude() float64 {
+	return math.Sqrt(v.X*v.X + v.Y*v.Y + v.Z*v.Z)
 }
 
 func getFloat(i interface{}) float64 {

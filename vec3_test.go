@@ -1,6 +1,9 @@
 package vec3
 
-import "testing"
+import (
+	"math"
+	"testing"
+)
 
 func TestToString(t *testing.T) {
 	v := Vec3{}
@@ -91,4 +94,15 @@ func TestDiv(t *testing.T) {
 
 		check(got, want)
 	})
+}
+
+func TestMagnitude(t *testing.T) {
+	v := Vec3{3, 4, 9}
+	mag := v.Magnitude()
+	got := math.Round(mag/0.01) * 0.01
+	var want float64 = 10.30
+
+	if got != want {
+		t.Errorf("got %f want %v", got, want)
+	}
 }
