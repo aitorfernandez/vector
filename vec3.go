@@ -1,6 +1,8 @@
 package vec3
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Vec3 struct {
 	X, Y, Z float64
@@ -48,6 +50,12 @@ func (v *Vec3) Sub(a ...interface{}) {
 			}
 		}
 	}
+}
+
+func (v *Vec3) Mult(n float64) {
+	v.X *= n
+	v.Y *= n
+	v.Z *= n
 }
 
 func getFloat(i interface{}) float64 {

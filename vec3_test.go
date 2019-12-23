@@ -59,3 +59,13 @@ func TestSub(t *testing.T) {
 		check(got, want)
 	})
 }
+
+func TestMult(t *testing.T) {
+	got := Vec3{2, 5, 8}
+	got.Mult(3)
+	want := Vec3{6, 15, 24}
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
