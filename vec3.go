@@ -30,6 +30,26 @@ func (v *Vec3) Add(a ...interface{}) {
 	}
 }
 
+func (v *Vec3) Sub(a ...interface{}) {
+	switch e := a[0].(type) {
+	case Vec3:
+		v.X -= e.X
+		v.Y -= e.Y
+		v.Z -= e.Z
+	case int, float64:
+		for i, arg := range a {
+			switch i {
+			case 0:
+				v.X -= getFloat(arg)
+			case 1:
+				v.Y -= getFloat(arg)
+			case 2:
+				v.Z -= getFloat(arg)
+			}
+		}
+	}
+}
+
 func getFloat(i interface{}) float64 {
 	switch i.(type) {
 	case int:

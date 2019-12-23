@@ -35,3 +35,27 @@ func TestAdd(t *testing.T) {
 		check(got, want)
 	})
 }
+
+func TestSub(t *testing.T) {
+	check := func(v1, v2 Vec3) {
+		if v1 != v2 {
+			t.Errorf("got %v want %v", v1, v2)
+		}
+	}
+
+	t.Run("sub Vec3", func(t *testing.T) {
+		got := Vec3{2, 4, 5}
+		got.Sub(Vec3{1, 3, 4})
+		want := Vec3{1, 1, 1}
+
+		check(got, want)
+	})
+
+	t.Run("sub float64", func(t *testing.T) {
+		got := Vec3{3, 6, 7}
+		got.Sub(2, 5, 6)
+		want := Vec3{1, 1, 1}
+
+		check(got, want)
+	})
+}
