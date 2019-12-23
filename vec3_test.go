@@ -69,3 +69,26 @@ func TestMult(t *testing.T) {
 		t.Errorf("got %v want %v", got, want)
 	}
 }
+
+func TestDiv(t *testing.T) {
+	got := Vec3{4, 5, 8}
+	check := func(v1, v2 Vec3) {
+		if v1 != v2 {
+			t.Errorf("got %v want %v", v1, v2)
+		}
+	}
+
+	t.Run("div by 0", func(t *testing.T) {
+		got.Div(0)
+		want := Vec3{4, 5, 8}
+
+		check(got, want)
+	})
+
+	t.Run("div", func(t *testing.T) {
+		got.Div(2)
+		want := Vec3{2, 2.5, 4}
+
+		check(got, want)
+	})
+}

@@ -2,6 +2,7 @@ package vec3
 
 import (
 	"fmt"
+	"log"
 )
 
 type Vec3 struct {
@@ -56,6 +57,17 @@ func (v *Vec3) Mult(n float64) {
 	v.X *= n
 	v.Y *= n
 	v.Z *= n
+}
+
+func (v *Vec3) Div(n float64) {
+	if n == 0 {
+		log.Println("divide by 0")
+		return
+	}
+
+	v.X /= n
+	v.Y /= n
+	v.Z /= n
 }
 
 func getFloat(i interface{}) float64 {
