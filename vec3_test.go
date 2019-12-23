@@ -100,9 +100,19 @@ func TestMagnitude(t *testing.T) {
 	v := Vec3{3, 4, 9}
 	mag := v.Magnitude()
 	got := math.Round(mag/0.01) * 0.01
-	var want float64 = 10.30
+	want := 10.30
 
 	if got != want {
-		t.Errorf("got %f want %v", got, want)
+		t.Errorf("got %v want %v", got, want)
+	}
+}
+
+func TestNormalize(t *testing.T) {
+	got := Vec3{10, 20, 2}
+	got.Normalize()
+	want := Vec3{0.44543540318737396, 0.8908708063747479, 0.0890870806374748}
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
 	}
 }

@@ -83,3 +83,11 @@ func getFloat(i interface{}) float64 {
 		return i.(float64)
 	}
 }
+
+// Normalize the vector to length 1
+func (v *Vec3) Normalize() {
+	mag := v.Magnitude()
+	if mag != 0 {
+		v.Mult(1 / mag)
+	}
+}
