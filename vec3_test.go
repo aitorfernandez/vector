@@ -32,8 +32,8 @@ func TestAdd(t *testing.T) {
 
 	t.Run("add float64", func(t *testing.T) {
 		got := Vec3{3, 6, 7}
-		got.Add(1, 1, 1)
-		want := Vec3{4, 7, 8}
+		got.Add(4, 2, 1)
+		want := Vec3{7, 8, 8}
 
 		check(got, want)
 	})
